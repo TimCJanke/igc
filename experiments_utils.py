@@ -319,7 +319,7 @@ def energy_distance(X,Y):
 
 
 
-###### functions for generating random vines ####
+###### functions for generating random copulas and vines ####
 
 def random_bicop(family):
     """ sample a copula with random parameters for given family """
@@ -404,6 +404,7 @@ def get_pvtrees(trees):
     return tree_list
 
 
+### more helper functions ###
 
 def emp_cdf(v, u):
     """ evaluate the empirical copula at points v using the samples u"""
