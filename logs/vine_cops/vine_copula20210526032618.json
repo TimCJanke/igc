@@ -1,0 +1,196 @@
+{
+    "pair copulas": {
+        "tree0": {
+            "pc0": {
+                "family": "Gaussian",
+                "rotation": "0",
+                "parameters": [
+                    [
+                        "0.71573038241237197"
+                    ]
+                ],
+                "var_types": [
+                    "c",
+                    "c"
+                ],
+                "nobs_": "0",
+                "loglik": "-nan(ind)"
+            },
+            "pc1": {
+                "family": "Student",
+                "rotation": "0",
+                "parameters": [
+                    [
+                        "0.92586136138830977",
+                        "9.1051492273761205"
+                    ]
+                ],
+                "var_types": [
+                    "c",
+                    "c"
+                ],
+                "nobs_": "0",
+                "loglik": "-nan(ind)"
+            },
+            "pc2": {
+                "family": "Joe",
+                "rotation": "180",
+                "parameters": [
+                    [
+                        "2.4094582629995998"
+                    ]
+                ],
+                "var_types": [
+                    "c",
+                    "c"
+                ],
+                "nobs_": "0",
+                "loglik": "-nan(ind)"
+            },
+            "pc3": {
+                "family": "Independence",
+                "rotation": "0",
+                "parameters": "",
+                "var_types": [
+                    "c",
+                    "c"
+                ],
+                "nobs_": "0",
+                "loglik": "0"
+            }
+        },
+        "tree1": {
+            "pc0": {
+                "family": "Independence",
+                "rotation": "0",
+                "parameters": "",
+                "var_types": [
+                    "c",
+                    "c"
+                ],
+                "nobs_": "0",
+                "loglik": "0"
+            },
+            "pc1": {
+                "family": "Gaussian",
+                "rotation": "0",
+                "parameters": [
+                    [
+                        "-0.75903358772060492"
+                    ]
+                ],
+                "var_types": [
+                    "c",
+                    "c"
+                ],
+                "nobs_": "0",
+                "loglik": "-nan(ind)"
+            },
+            "pc2": {
+                "family": "Clayton",
+                "rotation": "180",
+                "parameters": [
+                    [
+                        "4.0166221756474041"
+                    ]
+                ],
+                "var_types": [
+                    "c",
+                    "c"
+                ],
+                "nobs_": "0",
+                "loglik": "-nan(ind)"
+            }
+        },
+        "tree2": {
+            "pc0": {
+                "family": "BB7",
+                "rotation": "0",
+                "parameters": [
+                    [
+                        "5.447417524736089",
+                        "2.2276352117051399"
+                    ]
+                ],
+                "var_types": [
+                    "c",
+                    "c"
+                ],
+                "nobs_": "0",
+                "loglik": "-nan(ind)"
+            },
+            "pc1": {
+                "family": "BB7",
+                "rotation": "180",
+                "parameters": [
+                    [
+                        "3.6199517422877734",
+                        "11.246210497817904"
+                    ]
+                ],
+                "var_types": [
+                    "c",
+                    "c"
+                ],
+                "nobs_": "0",
+                "loglik": "-nan(ind)"
+            }
+        },
+        "tree3": {
+            "pc0": {
+                "family": "Frank",
+                "rotation": "0",
+                "parameters": [
+                    [
+                        "24.186427347778157"
+                    ]
+                ],
+                "var_types": [
+                    "c",
+                    "c"
+                ],
+                "nobs_": "0",
+                "loglik": "-nan(ind)"
+            }
+        }
+    },
+    "structure": {
+        "array": [
+            [
+                "5",
+                "4",
+                "5",
+                "5"
+            ],
+            [
+                "4",
+                "5",
+                "4"
+            ],
+            [
+                "3",
+                "3"
+            ],
+            [
+                "2"
+            ]
+        ],
+        "order": [
+            "5",
+            "3",
+            "4",
+            "1",
+            "2"
+        ]
+    },
+    "var_types": [
+        "c",
+        "c",
+        "c",
+        "c",
+        "c"
+    ],
+    "nobs_": "0",
+    "threshold": "0",
+    "loglik": "-nan(ind)"
+}
