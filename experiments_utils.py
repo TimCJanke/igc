@@ -193,7 +193,6 @@ def fit_models(data_train, data_test=None, margins_model="ECDF", IndepCop=False,
         cop_gmmn = GMMNCopula(dim_latent=pobs_train.shape[1]*3, dim_out=pobs_train.shape[1], **options_nn)           
         cop_gmmn.fit(pobs_train_nn, **options_nn_training)
         models_joint["gmmn_cop"] = cop_gmmn
-        models_joint["gmmn_cop_norm"] = cop_gmmn
 
 
     # GMMN with ED loss (models both margins and joint at once)
@@ -217,11 +216,9 @@ def make_data_eval(models_joint, models_margins, n=int(1e5)):
     data_y = {}
 
     # generate samples in unit space
-    for key_i, mdl_i in models_joint.items():
-        if key_i == "gmmn_cop_norm":
-            data_v[key_i] = mdl_i.simulate(n, normalize_marginals=True) 
-        elif key_i == "gmmn_cop":
-            data_v[key_i] = mdl_i.simulate(n, normalize_marginals=False) 
+    for key_i, mdl_i in models_joint.items(): 
+        if key_i == "gmmn_cop":
+            data_v[key_i] = mdl_i.simulate(n) 
         elif key_i == "gmmn_full":
             data_v[key_i] = None
         elif key_i == "gan":

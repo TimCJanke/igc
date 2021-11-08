@@ -21,10 +21,6 @@ class CopulaAutoEncoder(object):
         self.margins = self._fit_margins(self.z)
         self.u = self._cdf(self.z)
 
-        # if x_test is not None:
-        #     self.u_test = self._cdf((self._encode(x_test)))
-        # else:
-        #     self.u_test = None
         
     def _encode(self, x):
         # encode images to latent space
@@ -63,19 +59,26 @@ class CopulaAutoEncoder(object):
         return margins      
 
 
-    def _sample_u(self, n_samples):
+    def _sample_u(self, n_samples=1):
         # sample from copula
         return self.copula.simulate(n_samples)
 
 
-    def _sample_z(self, n_samples):
+    def _sample_z(self, n_samples=1, u=None):
         # sample from latent space
-        return self._ppf(self._sample_u(n_samples))
+        if u is None:
+            return self._ppf(self._sample_u(n_samples))
+        else:
+            return self._ppf(u)
         
         
-    def sample_images(self, n_samples):
+    def sample_images(self, n_samples=1, z=None):
         # sample an image
-        return self._decode(self._sample_z(n_samples))
+        if z is None:
+            return self._decode(self._sample_z(n_samples))
+        else:
+            return self._decode(z)
+            
 
     def show_images(self, n=5, imgs=None, cmap="gray", title=None):
         if imgs is None:
@@ -89,6 +92,7 @@ class CopulaAutoEncoder(object):
             ax.get_yaxis().set_visible(False)
         plt.suptitle(title)
         plt.tight_layout()
+
 
 
 
@@ -119,6 +123,7 @@ class IGCAutoEncoder(CopulaAutoEncoder):
 
 
 
+
 class GMMNCopulaAutoEncoder(CopulaAutoEncoder):
     """ Copula Auto Encoder with GMMN Copula """
 
@@ -135,35 +140,6 @@ class GMMNCopulaAutoEncoder(CopulaAutoEncoder):
         return hist
 
 
-    def _sample_u(self, n_samples, normalize_marginals=False):
-        # sample from copula
-        return self.copula.simulate(n_samples, normalize_marginals=normalize_marginals)
-
-
-    def _sample_z(self, n_samples, normalize_marginals=False):
-        # sample from latent space
-        return self._ppf(self._sample_u(n_samples, normalize_marginals=normalize_marginals))
-        
-
-    def sample_images(self, n_samples, normalize_marginals=False):
-        # sample an image
-        return self._decode(self._sample_z(n_samples, normalize_marginals=normalize_marginals))
-
-
-    def show_images(self, n=5, imgs=None, cmap="gray", title=None, normalize_marginals=False):
-        if imgs is None:
-            imgs = self.sample_images(n, normalize_marginals=normalize_marginals)
-        
-        plt.figure(figsize=(16, 3))
-        for i in range(n):
-            ax = plt.subplot(1, n, i+1)
-            plt.imshow(np.squeeze(imgs[i]*255), vmin=0, vmax=255, cmap=cmap)
-            ax.get_xaxis().set_visible(False)
-            ax.get_yaxis().set_visible(False)
-        plt.suptitle(title)
-        plt.tight_layout()
-
-
     def save_copula_model(self, path):
         self.copula.save_model(path)
 
@@ -172,6 +148,7 @@ class GMMNCopulaAutoEncoder(CopulaAutoEncoder):
         self.copula = GMMNCopula(dim_out = self.z.shape[1], n_samples_train=n_samples_train, dim_latent=self.z.shape[1]*2)
         self.copula.load_model(path)
         print("Loaded saved copula model.")
+
 
 
 
@@ -226,6 +203,7 @@ class IndependenceCopulaCopulaAutoEncoder(CopulaAutoEncoder):
 
     def _sample_u(self, n_samples):
         return np.random.uniform(0.0, 1.0, size=(n_samples, self.u.shape[1]))
+
 
 
 class VariationalAutoEncoder(object):
