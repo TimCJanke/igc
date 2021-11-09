@@ -62,7 +62,7 @@ def run_toy_example(dataset, n_train, n_test):
 
     return all_scores["NLL_dataspace"], data_models_y, data_models_v, data_train, data_test
 
-N_ROUNDS = 3
+N_ROUNDS = 10
 N_TRAINS = [5000]
 N_TEST = 5000
 DATASETS = ["swiss_roll","ring_of_gaussians", "grid"]

@@ -86,7 +86,7 @@ class SoftRank(layers.Layer):
 
 ################ IGC model ################
 class ImplicitGenerativeCopula(object):
-    def __init__(self, dim_latent=10, dim_out=2, n_samples_train=100, n_layers=3, n_neurons=200, activation="relu", alpha=1000.0, mu=0.0, sigma=1.0, sigmoid_layer=False, sigmoid_slope=1.0, optimizer="Adam"):
+    def __init__(self, dim_latent=10, dim_out=2, n_samples_train=200, n_layers=2, n_neurons=100, activation="relu", alpha=1000.0, mu=0.0, sigma=1.0, sigmoid_layer=False, sigmoid_slope=1.0, optimizer="Adam"):
         self.dim_latent = dim_latent
         self.dim_out = dim_out
         self.n_samples_train = n_samples_train
@@ -342,7 +342,7 @@ class GMMNCopula(ImplicitGenerativeCopula):
 ################ GMMN model ################
 class GenerativeMomentMatchingNetwork(object):
     """ A GMMN type model that operates directly on the data"""
-    def __init__(self, dim_latent=10, dim_out=2, n_samples_train=100, n_layers=3, n_neurons=200, activation="relu", alpha=1000.0, mu=0.0, sigma=1.0, optimizer="Adam"):
+    def __init__(self, dim_latent=10, dim_out=2, n_samples_train=200, n_layers=2, n_neurons=100, activation="relu", alpha=1000.0, mu=0.0, sigma=1.0, optimizer="Adam"):
         self.dim_latent = dim_latent
         self.dim_out = dim_out
         self.n_samples_train = n_samples_train
@@ -463,10 +463,9 @@ class GenerativeMomentMatchingNetwork(object):
 ################ GAN model ################
 class GenerativeAdversarialNetwork(object):
     """ A vanilla GAN that operates directly on the data """
-    def __init__(self, dim_latent=10, dim_out=2, n_samples_train=100, n_layers=3, n_neurons=200, activation="relu", alpha=1000.0, mu=0.0, sigma=1.0, optimizer="Adam"):
+    def __init__(self, dim_latent=10, dim_out=2, n_layers=2, n_neurons=100, activation="relu", mu=0.0, sigma=1.0, optimizer="Adam"):
         self.dim_latent = dim_latent
         self.dim_out = dim_out
-        self.n_samples_train = n_samples_train
         self.n_layers = n_layers
         self.n_neurons = n_neurons
         self.activation = activation
